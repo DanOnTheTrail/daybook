@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`hello Component renders correctly 1`] = `
 <h2>
   Hello from React!
 </h2>
