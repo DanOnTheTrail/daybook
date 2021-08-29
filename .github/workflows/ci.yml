@@ -22,8 +22,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-      - run: npm run package
-      - name: Archive production artifacts
+      - run: npm run make
+      - name: Archive release candidate
         uses: actions/upload-artifact@v2
         with:
           name: release-candidate
