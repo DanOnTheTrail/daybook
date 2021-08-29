@@ -4,17 +4,27 @@ on:
   push:
     branches: [ main ]
   pull_request:
-    branches: 
-      - '**/*'
+    types: [opened, synchronize, reopened]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - run: npm ci
       - run: npm run lint
       - run: npm run test -- --coverage
-      - run: npm run package
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - run: npm run make
+      - name: Archive release candidate
+        uses: actions/upload-artifact@v2
+        with:
+          name: release-candidate
+          path: out/make/**/*
