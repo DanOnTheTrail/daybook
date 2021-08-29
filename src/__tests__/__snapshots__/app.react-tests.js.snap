@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`hello Component renders correctly 1`] = `
+Array [
+  <h2>
+    Hello from React!
+  </h2>,
+  <hr />,
+  "Today is ",
+  "Tue Jul 12 2011",
+]
+`;
