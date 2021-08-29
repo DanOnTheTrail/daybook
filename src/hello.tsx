@@ -5,7 +5,7 @@ interface DateLineProps {
 }
 
 function Hello({ date }: DateLineProps) : JSX.Element {
-  let d = new Date(date);
+  const d = new Date(date);
   return (
     <>
     <h2>Hello from React!</h2>
